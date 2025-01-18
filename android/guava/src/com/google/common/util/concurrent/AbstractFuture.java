@@ -780,7 +780,7 @@ public abstract class AbstractFuture<V extends @Nullable Object> extends Interna
   protected boolean set(@ParametricNullness V value) {
     Object valueToSet = value == null ? NULL : value;
     if (ATOMIC_HELPER.casValue(this, null, valueToSet)) {
-      complete(this, /*callInterruptTask=*/ false);
+      complete(this, /* callInterruptTask= */ false);
       return true;
     }
     return false;
@@ -805,7 +805,7 @@ public abstract class AbstractFuture<V extends @Nullable Object> extends Interna
   protected boolean setException(Throwable throwable) {
     Object valueToSet = new Failure(checkNotNull(throwable));
     if (ATOMIC_HELPER.casValue(this, null, valueToSet)) {
-      complete(this, /*callInterruptTask=*/ false);
+      complete(this, /* callInterruptTask= */ false);
       return true;
     }
     return false;
@@ -1336,7 +1336,7 @@ public abstract class AbstractFuture<V extends @Nullable Object> extends Interna
    * <p>Static initialization of this class will fail if the {@link sun.misc.Unsafe} object cannot
    * be accessed.
    */
-  @SuppressWarnings({"SunApi", "removal"}) // b/345822163
+  @SuppressWarnings("SunApi") // b/345822163
   private static final class UnsafeAtomicHelper extends AtomicHelper {
     static final Unsafe UNSAFE;
     static final long LISTENERS_OFFSET;
